@@ -1,5 +1,5 @@
 body{
-    background-image:linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.3)),url(../assets/images/hogwarts.jpg);
+    background-image:url(../assets/images/hogwarts.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: initial;
@@ -7,34 +7,112 @@ body{
 nav{
     background-color: transparent;
 }
+.container{
+    width: 80%;
+}
 .brand-logo{
     left: 3vw !important;
 }
 .logo{
     height: 2em;
 }
+.login-box{
+    /* text-align: center; */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    /* align-content: center; */
+    flex-direction: column;
+    /* left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%); */
+}
+.login-header{
+    text-align: center;
+    background: -webkit-linear-gradient(#D4145A, #fbc03b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin:  2rem 0 2rem 0;
+    text-transform: uppercase;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+.login-card-title{
+    text-align: center;
+    background: -webkit-linear-gradient(#D4145A, #fbc03b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin:  4rem 0 2rem 0;
+    text-transform: uppercase;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+.login-card{
+    background-color: transparent;
+    box-shadow: 0 5px 15px rgb(255, 185, 113);
+    border-radius: 1rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    /* align-content: center; */
+    flex-direction: column;
+}
+img.prefix{
+    transform: rotate(17deg);
+}
+.prefix.active{
+    transform: rotate(-17deg);
+}
+.input-field label{
+    background: -webkit-linear-gradient(#ff0808, #8a038f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+.login-card-footer{
+    display: flex;
+}
+.login-btn{
+    position: relative;
+    background-image: linear-gradient(to right,#D4145A, #fbc03b);
+    box-shadow: 0 5px 15px rgb(255, 185, 113);
+    border-radius: 1rem;
+    font-family: 'Gloria Hallelujah', cursive;
+    left: 50%;
+    transform: translate(-50%);
+}
+.login-btn:hover{
+    background-image: linear-gradient(to left,#D4145A, #fbc03b);
+}
 .flying{
-    position: absolute;
-    height: 10vw;
+    position: relative;
+    height: 5rem;
     animation-name: fly;
-    animation-duration: 6s;
+    animation-duration: 2s;
     animation-fill-mode: forwards;
 }
 .snitch{
-    position: absolute;
-    height: 5em;
-    /* transform: translate(100px,100px); */
+    position: relative;
+    height: 2rem;
+    transform: translate(-50%,0%);
     animation-name: revolve;
     animation-duration: 1s;
     animation-iteration-count: infinite;
-    animation-timing-function: linear;
+    animation-timing-function: ease-in-out;
 }
 .sortng-hat{
-    position: absolute;
-    top: 20vw;
-    left: 44vw;
-    height: 10vw;
-    margin: auto 0;
+    position: relative;
+    top: 0vh;
+    left: -6vw;
+    height: 4rem;
+    margin: 0 0;
+    animation-name: hat-grow;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
 }
 .sortng-hat:hover{
     cursor: pointer;
@@ -44,21 +122,73 @@ nav{
 }
 .flying-snitch{
     position: absolute;
-    top: 20vw;
-    left: 44vw;
-    height: 10vw;
+    height: 10vh;
     margin: auto 0;
 }
+.text-container{
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.text-container span{
+    text-transform: uppercase;
+    display: block;
+}
+.house-heading{
+    background: -webkit-linear-gradient(#ff1b1b, #596164);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: .5rem;
+    animation: house-heading;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+.house-name{
+    background: -webkit-linear-gradient(#D4145A, #fbc03b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: .5rem;
+    animation: house-name;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+.hide{
+    display: none;
+}
+
+/* keyframes */
 @keyframes fly{
-    from{transform: translate(-500px) scale(0)}
-    to{transform: translate(28vw) scale(.8)}
+    0%   {left:-40vw; top:0vh; transform: scale(0);}
+    100% {left:35vw; top:0vh; transform: scale(.8);}
+    /* from{transform: translate(-100px) scale(0)}
+    to{transform: translate(480px) scale(.8)} */
 }
 @keyframes dance{
-    0% {transform: scale(1) rotate(360deg);}
-    100% {transform: scale(.5);}
+    0% {transform: scale(1);}
+    100% {transform: scale(.8) rotate(360deg);}
 }
 @keyframes revolve {
-    0%   {left:40vw; top:45vh;}
-    50% {left: 55vw; top: 45vh;}
-    100% {left:40vw; top:45vh;}
+    0%   {left:30%; top:0vh;}
+    50% {left: 70%; top: 0vh;}
+    100% {left:30%; top:0vh;}
+}
+@keyframes hat-grow {
+    0%   {transform: scale(0);}
+    100% {transform: scale(1);}
+}
+@keyframes house-name{
+    0%,75% {transform: scale(0);}
+    85% {letter-spacing: 2rem;}
+    100% {transform: scale(1) rotate(360deg); letter-spacing: .5rem;}
+}
+@keyframes house-heading{
+    0% {transform: scale(0);}
+    50% {letter-spacing: 2rem;}
+    100% { transform: scale(1.2); letter-spacing: .5rem;}
 }

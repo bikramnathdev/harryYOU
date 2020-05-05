@@ -1,8 +1,11 @@
-import React from 'react';
 import axios from 'axios';
 
-export default class apis {
-    getHogwartHouse = () =>{
-        
+class apis {
+    getHogwartHouse = async () =>{
+        let res = await axios.get('https://www.potterapi.com/v1/sortingHat');
+        return res.data;
     }
 }
+
+const APIS = new apis();
+export default APIS;
