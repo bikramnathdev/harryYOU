@@ -3,7 +3,9 @@ import React, { Component } from 'react'
 // import hp from '../assets/images/harrypotter.png';
 // import sh from '../assets/images/sortinghat.png';
 import APIS from '../API/apis';
-import Login from './login';
+import Register from './auth/register';
+import Login from './auth/login';
+import { BrowserRouter, Route } from "react-router-dom";
 export default class main extends Component {
     constructor(props){
         super(props);
@@ -30,7 +32,11 @@ export default class main extends Component {
         // }
         return (
             <div className="container">
-                <Login/>
+                <BrowserRouter>
+                    <Route path="/register" exact component={Register}/>
+                    <Route path="/login" exact component={Login}/>
+                </BrowserRouter>
+                {/* <Register/> */}
                 {/* <img className='flying' src={hp} alt="harry potter flies"/>
                 <span className="objects">{hat_sniff}</span> */}
             </div>

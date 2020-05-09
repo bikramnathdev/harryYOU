@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import wand from '../assets/images/hpwand.png';
-import Loader from './loader';
+import wand from '../../assets/images/hpwand.png';
+import Loader from '../loader';
+import { Link } from "react-router-dom";
+import APIS from '../../API/apis';
 
-export default class login extends Component {
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+export default class register extends Component {   
     constructor(props){
         super(props);
         this.state={
-            firstname:'',
-            firstnameclass:'validate',
-            lastname:'',
-            laststnameclass:'validate',
             email:'',
             emailclass:'validate',
             password:'',
@@ -18,9 +20,11 @@ export default class login extends Component {
         }
     }
     render() {
-        const cardfooter = this.state.submitBTN ? <button class="btn login-btn" type="submit" name="action">Submit
-                            <i class="material-icons right">send</i>
-                        </button> : <Loader/>;
+        const cardfooter = this.state.submitBTN ? <div><button className="btn login-btn" type="submit" name="action">Login
+                                <i className="material-icons right">send</i>
+                            </button>
+                            <p>Don't have an account? <Link to="/register" className="btn sign-in-btn btn-small orange">Create Account</Link></p>
+                        </div> :<div> <Loader/></div>;
         return (
             <div className="login-box">
                 <div className="row">
@@ -29,37 +33,23 @@ export default class login extends Component {
                     </div>
                     <div className="login-card">
                         <div className="card-content">
-                        <span className="login-card-title">Create Account</span>
+                        <span className="login-card-title">Login</span>
                             <div className="row">
                                 <form className="col s12" onSubmit={this.handleSubmit}>
                                     <div className="row">
-                                        <div className="input-field col s6">
-                                            <img src={wand} class="prefix"/>
-                                            <input id="first_name" type="text" value={this.state.firstname} onChange={(e)=>{this.setState({firstname:e.target.value})}} className={this.state.firstnameclass} required/>
-                                            <label htmlFor="first_name">First Name</label>
-                                            <span class="helper-text" data-error="First Name is required"></span>
-                                        </div>
-                                        <div className="input-field col s6">
-                                            <img src={wand} class="prefix"/>
-                                            <input id="last_name" type="text" value={this.state.lastname} onChange={(e)=>{this.setState({lastname:e.target.value});}} className={this.state.laststnameclass} required/>
-                                            <label htmlFor="last_name">Last Name</label>
-                                            <span class="helper-text" data-error="Last Name is required"></span>
-                                        </div>
-                                    </div>
-                                    <div className="row">
                                         <div className="input-field col s12">
-                                            <img src={wand} class="prefix"/>
+                                            <img src={wand} className="prefix" alt="prefix image"/>
                                             <input id="email" type="email" value={this.state.email} onChange={(e)=>{this.setState({email:e.target.value})}} className={this.state.emailclass} required/>
                                             <label htmlFor="email">Email</label>
-                                            <span class="helper-text" data-error="Need a valid email"></span>
+                                            <span className="helper-text" data-error="Need a valid email"></span>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="input-field col s12">
-                                            <img src={wand} class="prefix"/>
+                                            <img src={wand} className="prefix" alt="prefix image"/>
                                             <input id="password" type="password" value={this.state.password} minLength={6} onChange={(e)=>{this.setState({password:e.target.value})}} className={this.state.passwordclass} required/>
                                             <label htmlFor="password">Password</label>
-                                            <span class="helper-text" data-error="Password should be 6 characters long"></span>
+                                            <span className="helper-text" data-error="Password should be 6 characters long"></span>
                                         </div>
                                     </div>
                                     <div className="login-card-footer">
@@ -70,25 +60,13 @@ export default class login extends Component {
                         </div>
                     </div>
                 </div>
+                <ToastContainer autoClose={5000}/>
             </div>
         )
     }
     validate = () => {
         var emailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         let isError = false;
-        if (this.state.firstname === '') {
-            isError = true;
-            this.setState({firstnameclass:'invalid'})
-        }else{
-            this.setState({firstnameclass:'valid'})
-        }
-        if (this.state.lastname === '') {
-            isError = true;
-            this.setState({laststnameclass:'invalid'})
-        }
-        else{
-            this.setState({laststnameclass:'valid'})
-        }
         if (!emailReg.test(String(this.state.email).toLowerCase())) {
             isError = true;
             this.setState({emailclass:'invalid'})
@@ -106,12 +84,13 @@ export default class login extends Component {
         return isError;
     }
     
-    handleSubmit = event =>{
+    handleSubmit = async event =>{
         event.preventDefault();
         let err = this.validate();
-        console.log(err);
         if (!err) {
-            this.setState({submitBTN:false})   
+            this.setState({submitBTN:false});
         }
     };
+    notifyerror = (message) => toast.error(message);
+    notifysuccess = (message) => toast.success(message);
 }

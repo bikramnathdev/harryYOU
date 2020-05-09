@@ -9,6 +9,10 @@ nav{
 }
 .container{
     width: 80%;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+.row{
+    margin-bottom: 0 !important;
 }
 .brand-logo{
     left: 3vw !important;
@@ -17,15 +21,9 @@ nav{
     height: 2em;
 }
 .login-box{
-    /* text-align: center; */
-    position: relative;
     display: flex;
     justify-content: center;
-    /* align-content: center; */
-    flex-direction: column;
-    /* left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%); */
+    align-items: center;
 }
 .login-header{
     text-align: center;
@@ -36,7 +34,7 @@ nav{
     font-weight: 700;
     margin:  2rem 0 2rem 0;
     text-transform: uppercase;
-    font-family: 'Gloria Hallelujah', cursive;
+    
 }
 .login-card-title{
     text-align: center;
@@ -45,18 +43,16 @@ nav{
     -webkit-text-fill-color: transparent;
     font-size: 1.5rem;
     font-weight: 700;
-    margin:  4rem 0 2rem 0;
     text-transform: uppercase;
-    font-family: 'Gloria Hallelujah', cursive;
+    
 }
 .login-card{
-    background-color: transparent;
+    background-color:transparent;
     box-shadow: 0 5px 15px rgb(255, 185, 113);
     border-radius: 1rem;
     text-align: center;
     display: flex;
     justify-content: center;
-    /* align-content: center; */
     flex-direction: column;
 }
 img.prefix{
@@ -71,22 +67,35 @@ img.prefix{
     -webkit-text-fill-color: transparent;
     font-size: 1.2rem;
     font-weight: bold;
-    font-family: 'Gloria Hallelujah', cursive;
+    
 }
 .login-card-footer{
+    position: relative;
     display: flex;
+    justify-content: center;
+    height: 6rem;
 }
 .login-btn{
+    font-family: 'Gloria Hallelujah', cursive;
     position: relative;
     background-image: linear-gradient(to right,#D4145A, #fbc03b);
     box-shadow: 0 5px 15px rgb(255, 185, 113);
     border-radius: 1rem;
-    font-family: 'Gloria Hallelujah', cursive;
-    left: 50%;
-    transform: translate(-50%);
+    
 }
 .login-btn:hover{
     background-image: linear-gradient(to left,#D4145A, #fbc03b);
+}
+.sign-in-btn{
+    font-family: 'Gloria Hallelujah', cursive;
+    position: relative;
+    background-image: linear-gradient(to left,#D4145A, #fbc03b);
+    box-shadow: 0 5px 15px rgb(255, 185, 113);
+    border-radius: 1rem;
+    
+}
+.sign-in-btn:hover{
+    background-image: linear-gradient(to right,#D4145A, #fbc03b);
 }
 .flying{
     position: relative;
@@ -98,7 +107,6 @@ img.prefix{
 .snitch{
     position: relative;
     height: 2rem;
-    transform: translate(-50%,0%);
     animation-name: revolve;
     animation-duration: 1s;
     animation-iteration-count: infinite;
@@ -174,9 +182,9 @@ img.prefix{
     100% {transform: scale(.8) rotate(360deg);}
 }
 @keyframes revolve {
-    0%   {left:30%; top:0vh;}
-    50% {left: 70%; top: 0vh;}
-    100% {left:30%; top:0vh;}
+    0%   {left:-100%; top:0vh;}
+    50% {left: 100%; top: 0vh;}
+    100% {left:-100%; top:0vh;}
 }
 @keyframes hat-grow {
     0%   {transform: scale(0);}
