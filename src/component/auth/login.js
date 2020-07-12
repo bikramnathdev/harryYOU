@@ -38,7 +38,7 @@ export default class register extends Component {
                                 <form className="col s12" onSubmit={this.handleSubmit}>
                                     <div className="row">
                                         <div className="input-field col s12">
-                                            <img src={wand} className="prefix" alt="prefix image"/>
+                                            <img src={wand} className="prefix" alt="prefix"/>
                                             <input id="email" type="email" value={this.state.email} onChange={(e)=>{this.setState({email:e.target.value})}} className={this.state.emailclass} required/>
                                             <label htmlFor="email">Email</label>
                                             <span className="helper-text" data-error="Need a valid email"></span>
@@ -46,10 +46,10 @@ export default class register extends Component {
                                     </div>
                                     <div className="row">
                                         <div className="input-field col s12">
-                                            <img src={wand} className="prefix" alt="prefix image"/>
+                                            <img src={wand} className="prefix" alt="prefix"/>
                                             <input id="password" type="password" value={this.state.password} minLength={6} onChange={(e)=>{this.setState({password:e.target.value})}} className={this.state.passwordclass} required/>
                                             <label htmlFor="password">Password</label>
-                                            <span className="helper-text" data-error="Password should be 6 characters long"></span>
+                                            <span className="helper-text" data-error="Password is required"></span>
                                         </div>
                                     </div>
                                     <div className="login-card-footer">
@@ -89,6 +89,22 @@ export default class register extends Component {
         let err = this.validate();
         if (!err) {
             this.setState({submitBTN:false});
+            const newUser ={
+                email: this.state.email,
+                password: this.state.password
+            }
+            try {
+                const requestObject = JSON.stringify(newUser);
+                const apiRoute = '/api/auth';
+                const res = await APIS.login(apiRoute,requestObject);
+                console.log(res);
+            } catch (error) {
+                const errors = error.response.data.errors;
+                this.setState({submitBTN:true});
+                errors.forEach(element => {
+                    this.notifyerror(element.msg);
+                });
+            }
         }
     };
     notifyerror = (message) => toast.error(message);

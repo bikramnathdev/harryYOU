@@ -15,6 +15,15 @@ class apis {
         let res = await axios.post(apiRoute,requestObject,config);
         return res;
     }
+    login = async (apiRoute, requestObject) => {
+        const config={
+            'headers':{
+                'Content-Type' : 'application/json'
+            }
+        }
+        let res = await axios.post(apiRoute,requestObject,config);
+        return res;
+    }
 }
 
 const APIS = new apis();

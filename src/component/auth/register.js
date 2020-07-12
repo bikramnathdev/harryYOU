@@ -42,13 +42,13 @@ export default class register extends Component {
                                 <form className="col s12" onSubmit={this.handleSubmit}>
                                     <div className="row">
                                         <div className="input-field col s6">
-                                            <img src={wand} className="prefix" alt="prefix image"/>
+                                            <img src={wand} className="prefix" alt="prefix"/>
                                             <input id="first_name" type="text" value={this.state.firstname} onChange={(e)=>{this.setState({firstname:e.target.value})}} className={this.state.firstnameclass} required/>
                                             <label htmlFor="first_name">First Name</label>
                                             <span className="helper-text" data-error="First Name is required"></span>
                                         </div>
                                         <div className="input-field col s6">
-                                            <img src={wand} className="prefix" alt="prefix image"/>
+                                            <img src={wand} className="prefix" alt="prefix"/>
                                             <input id="last_name" type="text" value={this.state.lastname} onChange={(e)=>{this.setState({lastname:e.target.value});}} className={this.state.laststnameclass} required/>
                                             <label htmlFor="last_name">Last Name</label>
                                             <span className="helper-text" data-error="Last Name is required"></span>
@@ -56,7 +56,7 @@ export default class register extends Component {
                                     </div>
                                     <div className="row">
                                         <div className="input-field col s12">
-                                            <img src={wand} className="prefix" alt="prefix image"/>
+                                            <img src={wand} className="prefix" alt="prefix"/>
                                             <input id="email" type="email" value={this.state.email} onChange={(e)=>{this.setState({email:e.target.value})}} className={this.state.emailclass} required/>
                                             <label htmlFor="email">Email</label>
                                             <span className="helper-text" data-error="Need a valid email"></span>
@@ -64,7 +64,7 @@ export default class register extends Component {
                                     </div>
                                     <div className="row">
                                         <div className="input-field col s12">
-                                            <img src={wand} className="prefix" alt="prefix image"/>
+                                            <img src={wand} className="prefix" alt="prefix"/>
                                             <input id="password" type="password" value={this.state.password} minLength={6} onChange={(e)=>{this.setState({password:e.target.value})}} className={this.state.passwordclass} required/>
                                             <label htmlFor="password">Password</label>
                                             <span className="helper-text" data-error="Password should be 6 characters long"></span>

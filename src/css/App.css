@@ -83,6 +83,9 @@ img.prefix{
     border-radius: 1rem;
     
 }
+input{
+    font-family: 'Gloria Hallelujah', cursive;
+}
 .login-btn:hover{
     background-image: linear-gradient(to left,#D4145A, #fbc03b);
 }
