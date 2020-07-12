@@ -3,10 +3,9 @@ import wand from '../../assets/images/hpwand.png';
 import Loader from '../loader';
 import { Link } from "react-router-dom";
 import APIS from '../../API/apis';
-
+import { Redirect, Route } from "react-router";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 
 export default class register extends Component {   
     constructor(props){
@@ -97,7 +96,12 @@ export default class register extends Component {
                 const requestObject = JSON.stringify(newUser);
                 const apiRoute = '/api/auth';
                 const res = await APIS.login(apiRoute,requestObject);
-                console.log(res);
+                if (res.status === 200) {
+                    console.log(res.data);
+                    return <Redirect to="/home" />;
+                } else {
+                    console.log(res.data);
+                }
             } catch (error) {
                 const errors = error.response.data.errors;
                 this.setState({submitBTN:true});
@@ -107,6 +111,7 @@ export default class register extends Component {
             }
         }
     };
+    
     notifyerror = (message) => toast.error(message);
     notifysuccess = (message) => toast.success(message);
 }
